@@ -11,8 +11,8 @@ ROOT_DIR = os.getenv("ROOT_DIR")
 if ROOT_DIR is None:
     raise ValueError("ROOT_DIR is not set.")
 
-LOG_FILE_PATH = f"{ROOT_DIR}/kernels/custom_kernel/custom_kernel.log"
-CHECKPOINT_FILE_PATH = f"{ROOT_DIR}/kernels/custom_kernel/checkpoint.pickle"
+LOG_FILE_PATH = f"{ROOT_DIR}/kernels/elastic_kernel/elastic_kernel.log"
+CHECKPOINT_FILE_PATH = f"{ROOT_DIR}/kernels/elastic_kernel/checkpoint.pickle"
 
 # ロガーの設定
 logger = logging.getLogger("ElasticKernelLogger")
@@ -84,19 +84,22 @@ class ElasticKernel(IPythonKernel):
             logger.info(
                 "Checkpoint file does not exist. Skipping loading checkpoint.")
 
-        # このままだと%whoで表示されないので、self.shell.user_ns_hiddenから削除する
-        self.__del_from_user_ns_hidden()
-
     def __del_from_user_ns_hidden(self):
-        # self.elastic_notebook.dependency_graph.variable_snapshotsに含まれる変数をself.shell.user_ns_hiddenから削除する
-        logger.debug(
-            f"Initial {self.shell.user_ns_hidden=}")
-        variable_snapshots = self.elastic_notebook.dependency_graph.variable_snapshots
-        for variable_name in variable_snapshots:
-            if variable_name in self.shell.user_ns_hidden:
-                del self.shell.user_ns_hidden[variable_name]
-        logger.debug(
-            f"Final {self.shell.user_ns_hidden=}")
+        # %whoで表示されるようにするために復元した変数をself.shell.user_ns_hiddenから削除する
+        logger.debug(f"Initial {self.shell.user_ns_hidden=}")
+
+        variable_snapshots = set(self.elastic_notebook.dependency_graph.variable_snapshots)
+        user_ns_hidden_keys = set(self.shell.user_ns_hidden.keys())
+
+        # 削除対象の変数名を一括で取得
+        variables_to_delete = variable_snapshots & user_ns_hidden_keys
+
+        # 一括で削除
+        for variable_name in variables_to_delete:
+            logger.debug(f"Deleting {variable_name} from self.shell.user_ns_hidden")
+            del self.shell.user_ns_hidden[variable_name]
+
+        logger.debug(f"Final {self.shell.user_ns_hidden=}")
 
     def __skip_record(self, code):
         skip_magic_commands = ["!", "%", "%%"]
@@ -119,6 +122,9 @@ class ElasticKernel(IPythonKernel):
             logger.debug("Recording event")
         else:
             logger.debug("Skipping record event")
+
+        # TODO: ここで毎回呼ぶのは効率悪いのでは？
+        self.__del_from_user_ns_hidden()
 
         return result
 
