@@ -7,9 +7,10 @@ JUPYTER_TOKEN=2ab300dd6bbb0b399187272848dd4e4de064ca7e95b65f4b
 # ========================================
 
 # 現在のパスを取得
-ROOT_DIR=$(pwd)
-USRE_NAME=$(whoami)
-KERNELS_DIR=/home/$USRE_NAME/.local/share/jupyter/kernels
+export ROOT_DIR=$(pwd)
+export USRE_NAME=$(whoami)
+# KERNELS_DIR=/home/$USRE_NAME/.local/share/jupyter/kernels  # Linux用
+KERNELS_DIR=/Users/$USRE_NAME/Library/Jupyter/kernels  # Mac用
 echo ROOT_DIR: $ROOT_DIR
 echo KERNELS_DIR: $KERNELS_DIR
 

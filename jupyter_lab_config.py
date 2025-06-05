@@ -1,6 +1,6 @@
 # Configuration file for lab.
 
-print("Hello Jupiter Lab Config")
+print("Hello Jupyter Lab Config")
 
 c = get_config() # type: ignore
 
