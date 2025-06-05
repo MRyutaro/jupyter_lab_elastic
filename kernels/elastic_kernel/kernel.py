@@ -36,7 +36,7 @@ logger.addHandler(rotating_file_handler)
 
 
 class ElasticKernel(IPythonKernel):
-    implementation = 'custom_kernel'
+    implementation = 'elastic_kernel'
     implementation_version = '1.0'
     language = 'python'
     language_version = '3.x'
@@ -45,7 +45,7 @@ class ElasticKernel(IPythonKernel):
         'mimetype': 'text/x-python',
         'file_extension': '.py',
     }
-    banner = "Custom Python Kernel with Hooks"
+    banner = "Elastic Python Kernel with Hooks"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
