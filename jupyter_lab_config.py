@@ -2,7 +2,7 @@
 
 print("Hello Jupyter Lab Config")
 
-c = get_config() # type: ignore
+c = get_config()  # type: ignore
 
 """
 ------------------------------------------------------------------------------
@@ -25,32 +25,32 @@ Application(SingletonConfigurable) configuration
 # c.Application.log_level = 30
 
 ## Configure additional log handlers.
-#  
+#
 #  The default stderr logs handler is configured by the log_level, log_datefmt
 #  and log_format settings.
-#  
+#
 #  This configuration can be used to configure additional handlers (e.g. to
 #  output the log to a file) or for finer control over the default handlers.
-#  
+#
 #  If provided this should be a logging configuration dictionary, for more
 #  information see:
 #  https://docs.python.org/3/library/logging.config.html#logging-config-
 #  dictschema
-#  
+#
 #  This dictionary is merged with the base logging configuration which defines
 #  the following:
-#  
+#
 #  * A logging formatter intended for interactive use called
 #    ``console``.
 #  * A logging handler that writes to stderr called
 #    ``console`` which uses the formatter ``console``.
 #  * A logger with the name of this application set to ``DEBUG``
 #    level.
-#  
+#
 #  This example adds a new handler that writes to a file:
-#  
+#
 #  .. code-block:: python
-#  
+#
 #     c.Application.logging_config = {
 #         "handlers": {
 #             "file": {
@@ -114,7 +114,7 @@ JupyterApp(Application) configuration
 #  See also: Application.log_level
 # c.JupyterApp.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.JupyterApp.logging_config = {}
 
@@ -133,13 +133,13 @@ ExtensionApp(JupyterApp) configuration
 ------------------------------------------------------------------------------
 """
 ## Base class for configurable Jupyter Server Extension Applications.
-#  
+#
 #      ExtensionApp subclasses can be initialized two ways:
-#  
+#
 #      - Extension is listed as a jpserver_extension, and ServerApp calls
 #        its load_jupyter_server_extension classmethod. This is the
 #        classic way of loading a server extension.
-#  
+#
 #      - Extension is launched directly by calling its `launch_instance`
 #        class method. This method can be set as a entry_point in
 #        the extensions setup.py.
@@ -179,7 +179,7 @@ ExtensionApp(JupyterApp) configuration
 #  See also: Application.log_level
 # c.ExtensionApp.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.ExtensionApp.logging_config = {}
 
@@ -204,7 +204,7 @@ ExtensionApp(JupyterApp) configuration
 # c.ExtensionApp.show_config_json = False
 
 ## paths to search for serving static files.
-#  
+#
 #          This allows adding javascript/css to be available from the notebook server machine,
 #          or overriding individual files in the IPython
 #  Default: []
@@ -215,18 +215,18 @@ ExtensionApp(JupyterApp) configuration
 # c.ExtensionApp.static_url_prefix = ''
 
 ## Paths to search for serving jinja templates.
-#  
+#
 #          Can be used to override templates from notebook.templates.
 #  Default: []
 # c.ExtensionApp.template_paths = []
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LabServerApp(ExtensionApp) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## A Lab Server Application that runs out-of-the-box
 
 ## "A list of comma-separated URIs to get the allowed extensions list
-#  
+#
 #  .. versionchanged:: 2.0.0
 #      `LabServerApp.whitetlist_uris` renamed to `allowed_extensions_uris`
 #  Default: ''
@@ -249,7 +249,7 @@ ExtensionApp(JupyterApp) configuration
 # c.LabServerApp.blacklist_uris = ''
 
 ## A list of comma-separated URIs to get the blocked extensions list
-#  
+#
 #  .. versionchanged:: 2.0.0
 #      `LabServerApp.blacklist_uris` renamed to `blocked_extensions_uris`
 #  Default: ''
@@ -322,7 +322,7 @@ ExtensionApp(JupyterApp) configuration
 #  See also: Application.log_level
 # c.LabServerApp.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.LabServerApp.logging_config = {}
 
@@ -410,10 +410,10 @@ ExtensionApp(JupyterApp) configuration
 #  Default: ''
 # c.LabServerApp.workspaces_dir = ''
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # LabApp(LabServerApp) configuration
-#------------------------------------------------------------------------------
-## 
+# ------------------------------------------------------------------------------
+##
 #  See also: LabServerApp.allowed_extensions_uris
 # c.LabApp.allowed_extensions_uris = ''
 
@@ -437,7 +437,7 @@ ExtensionApp(JupyterApp) configuration
 #  See also: LabServerApp.blacklist_uris
 # c.LabApp.blacklist_uris = ''
 
-## 
+##
 #  See also: LabServerApp.blocked_extensions_uris
 # c.LabApp.blocked_extensions_uris = ''
 
@@ -455,9 +455,9 @@ ExtensionApp(JupyterApp) configuration
 
 ## To enable real-time collaboration, you must install the extension `jupyter_collaboration`.
 #          You can install it using pip for example:
-#  
+#
 #              python -m pip install jupyter_collaboration
-#  
+#
 #          This flag is now deprecated and will be removed in JupyterLab v5.
 #  Default: False
 # c.LabApp.collaborative = False
@@ -570,7 +570,7 @@ ExtensionApp(JupyterApp) configuration
 #  See also: Application.log_level
 # c.LabApp.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.LabApp.logging_config = {}
 
@@ -682,9 +682,9 @@ ExtensionApp(JupyterApp) configuration
 #  Default: '/home/vscode/.jupyter/lab/workspaces'
 # c.LabApp.workspaces_dir = '/home/vscode/.jupyter/lab/workspaces'
 
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ServerApp(JupyterApp) configuration
-#------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 ## The Jupyter Server application class.
 
 ## Set the Access-Control-Allow-Credentials: true header
@@ -697,21 +697,21 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.allow_external_kernels = False
 
 ## Set the Access-Control-Allow-Origin header
-#  
+#
 #          Use '*' to allow any origin to access your server.
-#  
+#
 #          Takes precedence over allow_origin_pat.
 #  Default: ''
 # c.ServerApp.allow_origin = ''
 
 ## Use a regular expression for the Access-Control-Allow-Origin header
-#  
+#
 #          Requests from an origin matching the expression will get replies with:
-#  
+#
 #              Access-Control-Allow-Origin: origin
-#  
+#
 #          where `origin` is the origin of the request.
-#  
+#
 #          Ignored if allow_origin is set.
 #  Default: ''
 # c.ServerApp.allow_origin_pat = ''
@@ -721,15 +721,15 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.allow_password_change = True
 
 ## Allow requests where the Host header doesn't point to a local server
-#  
+#
 #         By default, requests get a 403 forbidden response if the 'Host' header
 #         shows that the browser thinks it's on a non-local domain.
 #         Setting this option to True disables this check.
-#  
+#
 #         This protects against 'DNS rebinding' attacks, where a remote web server
 #         serves you a page and then changes its DNS to send later requests to a
 #         local IP, bypassing same-origin checks.
-#  
+#
 #         Local IP addresses (such as 127.0.0.1 and ::1) are allowed as local,
 #         along with hostnames configured in local_hostnames.
 #  Default: False
@@ -740,15 +740,15 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.allow_root = False
 
 ## Allow unauthenticated access to endpoints without authentication rule.
-#  
+#
 #          When set to `True` (default in jupyter-server 2.0, subject to change
 #          in the future), any request to an endpoint without an authentication rule
 #          (either `@tornado.web.authenticated`, or `@allow_unauthenticated`)
 #          will be permitted, regardless of whether user has logged in or not.
-#  
+#
 #          When set to `False`, logging in will be required for access to each endpoint,
 #          excluding the endpoints marked with `@allow_unauthenticated` decorator.
-#  
+#
 #          This option can be configured using `JUPYTER_SERVER_ALLOW_UNAUTHENTICATED_ACCESS`
 #          environment variable: any non-empty value other than "true" and "yes" will
 #          prevent unauthenticated access to endpoints without `@allow_unauthenticated`.
@@ -773,7 +773,7 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.autoreload = False
 
 ## The base URL for the Jupyter server.
-#  
+#
 #                         Leading and trailing slashes can be omitted,
 #                         and will automatically be added.
 #  Default: '/'
@@ -820,7 +820,7 @@ ExtensionApp(JupyterApp) configuration
 #          By default this is generated on first start of the server and persisted across server
 #          sessions by writing the cookie secret into the `cookie_secret_file` file.
 #          When using an executable config file you can override this to be random at each server restart.
-#  
+#
 #          Note: Cookie secrets should be kept private, do not share config files with
 #          cookie_secret stored in plaintext (you can read the value from a file).
 #  Default: b''
@@ -831,12 +831,12 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.cookie_secret_file = ''
 
 ## Override URL shown to users.
-#  
+#
 #          Replace actual URL, including protocol, address, port and base URL,
 #          with the given value when displaying URL to the users. Do not change
 #          the actual connection URL. If authentication token is enabled, the
 #          token is added to the custom URL automatically.
-#  
+#
 #          This option is intended to be used when the URL to display to the user
 #          cannot be determined reliably by the Jupyter server (proxified
 #          or containerized setups for example).
@@ -848,13 +848,13 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.default_url = '/'
 
 ## Disable cross-site-request-forgery protection
-#  
+#
 #          Jupyter server includes protection from cross-site request forgeries,
 #          requiring API requests to either:
-#  
+#
 #          - originate from pages served by this server (validated with XSRF cookie and token), or
 #          - authenticate with a token
-#  
+#
 #          Some anonymous compute resources still desire the ability to run code,
 #          completely without authentication.
 #          These services can disable all authentication and security checks,
@@ -875,14 +875,14 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.extra_services = []
 
 ## Extra paths to search for serving static files.
-#  
+#
 #          This allows adding javascript/css to be available from the Jupyter server machine,
 #          or overriding individual files in the IPython
 #  Default: []
 # c.ServerApp.extra_static_paths = []
 
 ## Extra paths to search for serving jinja templates.
-#  
+#
 #          Can be used to override templates from jupyter_server.templates.
 #  Default: []
 # c.ServerApp.extra_template_paths = []
@@ -939,7 +939,7 @@ ExtensionApp(JupyterApp) configuration
 
 ## The kernel spec manager class to use. Should be a subclass of
 #  `jupyter_client.kernelspec.KernelSpecManager`.
-#  
+#
 #  The Api of KernelSpecManager is provisional and might change without warning
 #  between this version of Jupyter and the next stable one.
 #  Default: 'builtins.object'
@@ -962,7 +962,7 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.limit_rate = False
 
 ## Hostnames to allow as local when allow_remote_access is False.
-#  
+#
 #         Local IP addresses (such as 127.0.0.1 and ::1) are automatically accepted
 #         as local as well.
 #  Default: ['localhost']
@@ -980,7 +980,7 @@ ExtensionApp(JupyterApp) configuration
 #  See also: Application.log_level
 # c.ServerApp.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.ServerApp.logging_config = {}
 
@@ -995,7 +995,7 @@ ExtensionApp(JupyterApp) configuration
 ## Sets the maximum allowed size of the client request body, specified in the
 #  Content-Length request header field. If the size in a request exceeds the
 #  configured value, a malformed HTTP message is returned to the client.
-#  
+#
 #  Note: max_body_size is applied even in streaming mode.
 #  Default: 536870912
 # c.ServerApp.max_body_size = 536870912
@@ -1101,7 +1101,7 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.ssl_options = {}
 
 ## Paths to set up static files as immutable.
-#  
+#
 #  This allow setting up the cache control of static files as immutable. It
 #  should be used for static file named with a hash for instance.
 #  Default: []
@@ -1112,10 +1112,10 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.terminado_settings = {}
 
 ## Set to False to disable terminals.
-#  
+#
 #           This does *not* make the server more secure by itself.
 #           Anything the user can in a terminal, they can also do in a notebook.
-#  
+#
 #           Terminals may also be automatically disabled if the terminado package
 #           is not available.
 #  Default: False
@@ -1144,7 +1144,7 @@ ExtensionApp(JupyterApp) configuration
 #       launching a browser using a redirect file can lead the browser failing to load.
 #       This is because of the difference in file structures/paths between the runtime and
 #       the browser.
-#  
+#
 #       Disabling this setting to False will disable this behavior, allowing the browser
 #       to launch by using a URL and visible token (as before).
 #  Default: True
@@ -1154,33 +1154,33 @@ ExtensionApp(JupyterApp) configuration
 #          `new` argument passed to the standard library method `webbrowser.open`.
 #          The behaviour is not guaranteed, but depends on browser support. Valid
 #          values are:
-#  
+#
 #           - 2 opens a new tab,
 #           - 1 opens a new window,
 #           - 0 opens in an existing window.
-#  
+#
 #          See the `webbrowser.open` documentation for details.
 #  Default: 2
 # c.ServerApp.webbrowser_open_new = 2
 
 ## Set the tornado compression options for websocket connections.
-#  
+#
 #  This value will be returned from
 #  :meth:`WebSocketHandler.get_compression_options`. None (default) will disable
 #  compression. A dict (even an empty one) will enable compression.
-#  
+#
 #  See the tornado docs for WebSocketHandler.get_compression_options for details.
 #  Default: None
 # c.ServerApp.websocket_compression_options = None
 
 ## Configure the websocket ping interval in seconds.
-#  
+#
 #  Websockets are long-lived connections that are used by some Jupyter Server
 #  extensions.
-#  
+#
 #  Periodic pings help to detect disconnected clients and keep the connection
 #  active. If this is set to None, then no pings will be performed.
-#  
+#
 #  When a ping is sent, the client has ``websocket_ping_timeout`` seconds to
 #  respond. If no response is received within this period, the connection will be
 #  closed from the server side.
@@ -1188,14 +1188,14 @@ ExtensionApp(JupyterApp) configuration
 # c.ServerApp.websocket_ping_interval = 0
 
 ## Configure the websocket ping timeout in seconds.
-#  
+#
 #  See ``websocket_ping_interval`` for details.
 #  Default: 0
 # c.ServerApp.websocket_ping_timeout = 0
 
 ## The base URL for websockets,
 #          if it differs from the HTTP server (hint: it almost certainly doesn't).
-#  
+#
 #          Should be in the form of an HTTP origin: ws[s]://hostname[:port]
 #  Default: ''
 # c.ServerApp.websocket_url = ''
